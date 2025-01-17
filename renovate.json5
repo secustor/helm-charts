@@ -5,6 +5,10 @@
     'customManagers:helmChartYamlAppVersions',
     'helpers:pinGitHubActionDigests',
   ],
+  helmv3: {
+    // bump chart version if the appVersion changes
+    bumpVersion: "minor",
+  },
   customManagers: [
     {
       customType: "regex",
