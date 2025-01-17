@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "immich-server.name" . }}
+  labels:
+    {{- include "immich-server.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.server.autoscaling.enabled }}
+  replicas: {{ .Values.server.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "immich-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.server.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "immich-server.labels" . | nindent 8 }}
+        {{- with .Values.server.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "immich.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.server.podSecurityContext | nindent 8 }}
+      containers:
+        - name: immich-server
+          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.server.service.port }}
+              protocol: TCP
+          env:
+          {{- with .Values.common.postgres }}
+            - name: DB_HOSTNAME
+              value: {{ .host }}
+            {{- if .existingSecret.enabled}}
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .existingSecret.secretName }}
+                  key: {{ .existingSecret.usernameKey }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .existingSecret.secretName }}
+                  key: {{ .existingSecret.passwordKey }}
+            {{- else }}
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "postgres.secretName" $ }}
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "postgres.secretName" $ }}
+                  key: password
+            {{- end }}
+          {{- end }}
+
+          {{- with .Values.common.redis }}
+            - name: REDIS_HOSTNAME
+              value: {{ .host }}
+            {{- if .existingSecret.enabled}}
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .existingSecret.secretName }}
+                  key: {{ .existingSecret.passwordKey }}
+            {{- else }}
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "redis.secretName" $ }}
+                  key: password
+            {{- end }}
+          {{- end }}
+
+          {{- if .Values.server.env }}
+            {{- toYaml .Values.server.env | nindent 12 }}
+          {{- end }}
+          securityContext:
+            {{- toYaml .Values.server.securityContext | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /api/server/ping
+          resources:
+            {{- toYaml .Values.server.resources | nindent 12 }}
+          {{- with .Values.server.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.server.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.server.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.server.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.server.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
