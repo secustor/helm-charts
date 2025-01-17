@@ -39,6 +39,8 @@ spec:
               containerPort: {{ .Values.server.service.port }}
               protocol: TCP
           env:
+            - name: DB_VECTOR_EXTENSION
+              value: {{ .Values.common.config.vectorExtension }}
           {{- with .Values.common.postgres }}
             - name: DB_HOSTNAME
               value: {{ .host }}

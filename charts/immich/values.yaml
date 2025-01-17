@@ -4,8 +4,13 @@ fullnameOverride: ""
 
 imagePullSecrets: []
 
+
 # Configurations that are relevant for all the components of the chart
 common:
+  config:
+    # This has only an effect during database initialization
+    # pgvector is the default as CloudNativePG supports it out of the box
+    vectorExtension: pgvector # or pgvecto.rs
   postgres:
     host: immich-db
     existingSecret:

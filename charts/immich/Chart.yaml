@@ -3,5 +3,5 @@ name: immich
 description: A Immich Helm chart targeted at advanced users
 
 type: application
-version: 0.1.0
+version: 0.2.0
 appVersion: "v1.124.2"
