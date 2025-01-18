@@ -1,0 +1,27 @@
+common:
+  config:
+    vectorExtension: pgvector
+  postgres:
+    host: immich-db-rw
+    existingSecret:
+      enabled: true
+      secretName: immich-db-immich
+      usernameKey: username
+      passwordKey: password
+  redis:
+    host: immich-redis-master
+    existingSecret:
+      enabled: true
+      secretName: immich-redis-access
+      passwordKey: password
+server:
+  volumeMounts:
+    - mountPath: /usr/src/app/upload
+      name: uploads
+  volumes:
+    - name: uploads
+      hostPath:
+        path: /data/media/immich
+        type: Directory
+machineLearning:
+  enabled: true

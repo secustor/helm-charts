@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: immich-db-immich
+type: Opaque
+stringData:
+  username: "an-user"
+  password: "a-password"
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-db
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.2-bookworm
+  instances: 1
+  storage:
+    size: 15Gi
+  bootstrap:
+    initdb:
+      database: immich
+      owner: immich
+      secret:
+        name: immich-db-immich
+  managed:
+    roles:
+      - name: immich
+        createdb: true
+        login: true
+        superuser: true
+        passwordSecret:
+          name: immich-db-immich

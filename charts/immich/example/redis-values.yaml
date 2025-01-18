@@ -1,0 +1,5 @@
+architecture: standalone
+auth:
+  enabled: true
+  existingSecret: immich-redis-access
+  existingSecretPasswordKey: password
