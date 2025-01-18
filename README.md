@@ -1,5 +1,8 @@
-# helm-charts
-Contains Helm charts maintained by myself.
+# Helm-charts by Secustor
+
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/secustor)](https://artifacthub.io/packages/search?repo=secustor)
+
+Contains Helm charts maintained with love by myself.
 
 > [!INFO]
 > The code is provided as-is with no warranties.
