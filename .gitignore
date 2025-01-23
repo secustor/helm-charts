@@ -1,4 +1,8 @@
 # Chart dependencies
 **/charts/*.tgz
 
+# Jetbrains
+.idea
+
+# Helm
 output
