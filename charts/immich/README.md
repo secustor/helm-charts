@@ -1,6 +1,6 @@
 # Immich
 
-This chart deploys [Immich](https://immich.app/) and 
+This **unofficial** chart deploys [Immich](https://immich.app/) and 
 is targeted at an audience which wants to have some lower level control over the deployment. 
 
 ## Prerequisites

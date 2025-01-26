@@ -1,8 +1,22 @@
 apiVersion: v2
 name: immich
 description: A Immich Helm chart targeted at advanced users
+home: https://immich.app/
+icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+sources:
+  - https://github.com/secustor/helm-charts/tree/main/charts/immich
+  - https://github.com/immich-app/immich
+maintainers:
+  - name: secustor
+    email: sebastian@poxhofer.at
 
 type: application
 version: 0.2.3
 # renovate: image=ghcr.io/immich-app/immich-server
 appVersion: "v1.125.3"
+
+annotations:
+  artifacthub.io/category: storage
+  artifacthub.io/links: |
+    - name: support
+      url: https://github.com/secustor/helm-charts/issues
