@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   immich:
   - apiVersion: v2
+    appVersion: v1.125.2
+    created: "2025-01-26T16:26:42.663809058Z"
+    description: A Immich Helm chart targeted at advanced users
+    digest: fdb566ef3ccd02c72281d316355f8fe88144367a52cc0a9b24f19f6749f42477
+    name: immich
+    type: application
+    urls:
+    - https://github.com/secustor/helm-charts/releases/download/immich-0.2.2/immich-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     appVersion: v1.125.1
     created: "2025-01-23T22:58:56.14654912Z"
     description: A Immich Helm chart targeted at advanced users
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/secustor/helm-charts/releases/download/immich-0.2.0/immich-0.2.0.tgz
     version: 0.2.0
-generated: "2025-01-23T22:58:56.146556784Z"
+generated: "2025-01-26T16:26:42.66382111Z"
