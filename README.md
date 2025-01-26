@@ -4,7 +4,7 @@
 
 Contains Helm charts maintained with love by myself.
 
-> [!INFO]
+> [!NOTE]  
 > The code is provided as-is with no warranties.
 
 See the README.md in each chart directory for more information.
