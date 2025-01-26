@@ -5,4 +5,4 @@ description: A Immich Helm chart targeted at advanced users
 type: application
 version: 0.2.1
 # renovate: image=ghcr.io/immich-app/immich-server
-appVersion: "v1.125.1"
+appVersion: "v1.125.2"
