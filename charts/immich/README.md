@@ -27,7 +27,7 @@ You will:
 - Deploy a Redis instance
 - Deploy Immich
 
-value files can be found in the [`example`](./example) directory.
+Value files can be found in the [`example` directory](https://github.com/secustor/helm-charts/tree/main/charts/immich/example).
 
 ### PostgreSQL
 This assumes you have [CloudNativePG](https://cloudnative-pg.io/)
