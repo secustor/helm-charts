@@ -13,7 +13,7 @@ maintainers:
 type: application
 version: 0.3.0
 # renovate: image=ghcr.io/immich-app/immich-server
-appVersion: "v1.126.1"
+appVersion: "v1.127.0"
 
 annotations:
   artifacthub.io/category: storage
