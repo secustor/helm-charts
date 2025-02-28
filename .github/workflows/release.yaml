@@ -51,5 +51,5 @@ jobs:
         run: |
           IFS=',' read -ra CHARTS <<< "${{ steps.releaser.outputs.changed_charts }}"
           for chart in "${CHARTS[@]}"; do
-            helm push "charts/${chart}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
+            helm push "${chart}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
