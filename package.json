@@ -1,0 +1,20 @@
+{
+  "name": "helm-charts",
+  "type": "module",
+  "packageManager": "pnpm@10.5.2",
+  "volta": {
+    "node": "22.14.0",
+    "pnpm": "10.5.2"
+  },
+  "scripts": {
+    "test": "vitest",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "22.13.7",
+    "prettier": "3.5.2",
+    "vitest": "3.0.7",
+    "vitest-mock-extended": "3.0.1"
+  }
+}

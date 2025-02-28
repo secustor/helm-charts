@@ -6,3 +6,7 @@
 
 # Helm
 output
+.cr-release-packages
+
+# Node
+node_modules
