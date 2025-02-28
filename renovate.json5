@@ -1,9 +1,9 @@
 {
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    'config:recommended',
-    'customManagers:helmChartYamlAppVersions',
-    'helpers:pinGitHubActionDigests',
+    "config:recommended",
+    "customManagers:helmChartYamlAppVersions",
+    "helpers:pinGitHubActionDigests",
   ],
   helmv3: {
     // bump chart version if the appVersion changes
@@ -12,12 +12,12 @@
   customManagers: [
     {
       customType: "regex",
-      fileMatch: ['\\.github\/workflows\/release\\.ya?ml'],
+      fileMatch: ["\\.github\/workflows\/release\\.ya?ml"],
       matchStrings: [
         // this is mostly a copy from https://docs.renovatebot.com/presets-customManagers/#custommanagersgithubactionsversions
         // and only changes the expected version prefix
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
-      ]
-    }
-  ]
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s",
+      ],
+    },
+  ],
 }
