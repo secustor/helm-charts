@@ -10,6 +10,7 @@ Contains Helm charts maintained with love by myself.
 See the README.md in each chart directory for more information.
 
 ## Usage
+
 You can add this repository to your [Helm](https://helm.sh/) installation by running the following command:
 
 ```bash
