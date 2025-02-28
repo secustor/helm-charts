@@ -31,6 +31,7 @@ jobs:
           version: v3.17.1
       
       - name: Run chart-releaser
+        id: releaser
         uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
         with:
           charts_dir: charts
@@ -48,10 +49,7 @@ jobs:
       
       - name: Push charts to GHCR
         run: |
-          shopt -s nullglob
-          for pkg in .cr-release-packages/*.tgz; do
-            if [ -z "${pkg:-}" ]; then
-              break
-            fi
-            helm push "${pkg}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
+          IFS=',' read -ra CHARTS <<< "${{ steps.releaser.outputs.changed_charts }}"
+          for chart in "${CHARTS[@]}"; do
+            helm push "charts/${chart}" "oci://ghcr.io/${GITHUB_REPOSITORY}"
           done
