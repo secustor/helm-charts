@@ -1,5 +1,6 @@
 architecture: standalone
 auth:
   enabled: true
+  usePasswordFiles: false
   existingSecret: immich-redis-access
   existingSecretPasswordKey: password
