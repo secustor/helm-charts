@@ -15,6 +15,11 @@ export async function main(rawArgs: string[]) {
   const args = rawArgs.slice(2);
   const archives = await getChangedChartsArchives(args);
 
+  if (archives.length === 0) {
+    console.log("No charts to push");
+    return;
+  }
+
   console.log("Pushing charts");
   for (const archive of archives) {
     const cmd = `helm push "${archive.path}" "oci://ghcr.io/${process.env.GITHUB_REPOSITORY}"`;
@@ -45,6 +50,13 @@ export async function getChangedChartsArchives(
 }
 
 async function getChartArchives(): Promise<Record<string, Archive>> {
+  try {
+    await fs.access(CR_RELEASE_PACKAGE_PATH);
+  } catch (e) {
+    console.log("No chart archives found");
+    return {};
+  }
+
   const archiveList = await fs.readdir(CR_RELEASE_PACKAGE_PATH, {
     withFileTypes: true,
   });
