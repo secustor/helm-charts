@@ -31,21 +31,26 @@ describe("push-charts", () => {
   describe("main", () => {
     test("should push single chart", async () => {
       fs.readdir.mockResolvedValue([myChartDirentMock]);
-      await main(["node", "push-chart.ts", "my-chart"]);
-      expect(child_process.exec).toHaveBeenCalledWith(
+      // mock `git tag` to return empty string
+      child_process.execSync.mockReturnValue(Buffer.from(""));
+      await main(["node", "push-chart.ts", "charts/my-chart"]);
+      expect(child_process.execSync).toHaveBeenNthCalledWith(
+        2,
         `helm push ".cr-release-packages/my-chart-1.0.0.tgz" "oci://ghcr.io/lore/ipsum"`,
       );
     });
 
     test("should push multiple charts", async () => {
       fs.readdir.mockResolvedValue([myChartDirentMock, fooChartDirentMock]);
-      await main(["node", "push-chart.ts", "my-chart,foo"]);
-      expect(child_process.exec).toHaveBeenNthCalledWith(
-        1,
+      child_process.execSync.mockReturnValue(Buffer.from(""));
+
+      await main(["node", "push-chart.ts", "charts/my-chart,charts/foo"]);
+      expect(child_process.execSync).toHaveBeenNthCalledWith(
+        2,
         `helm push ".cr-release-packages/my-chart-1.0.0.tgz" "oci://ghcr.io/lore/ipsum"`,
       );
-      expect(child_process.exec).toHaveBeenNthCalledWith(
-        2,
+      expect(child_process.execSync).toHaveBeenNthCalledWith(
+        3,
         `helm push ".cr-release-packages/foo-2.0.0.tgz" "oci://ghcr.io/lore/ipsum"`,
       );
     });
@@ -54,24 +59,56 @@ describe("push-charts", () => {
   describe("getChangedCharts", () => {
     test("should return changed chart if only one exists", async () => {
       fs.readdir.mockResolvedValue([myChartDirentMock]);
+      child_process.execSync.mockReturnValue(Buffer.from(""));
       await expect(getChangedChartsArchives(["my-chart"])).resolves.toEqual([
-        ".cr-release-packages/my-chart-1.0.0.tgz",
+        {
+          path: ".cr-release-packages/my-chart-1.0.0.tgz",
+          fileName: "my-chart-1.0.0",
+        },
       ]);
     });
 
-    test("should return changed chart if multiple exists", async () => {
+    test("should return multiple", async () => {
       fs.readdir.mockResolvedValue([fooChartDirentMock, myChartDirentMock]);
+      child_process.execSync.mockReturnValue(Buffer.from(""));
       await expect(getChangedChartsArchives(["foo"])).resolves.toEqual([
-        ".cr-release-packages/foo-2.0.0.tgz",
+        {
+          path: ".cr-release-packages/foo-2.0.0.tgz",
+          fileName: "foo-2.0.0",
+        },
+        {
+          path: ".cr-release-packages/my-chart-1.0.0.tgz",
+          fileName: "my-chart-1.0.0",
+        },
       ]);
     });
 
     test("should return multiple changed charts if multiple exists and changed", async () => {
       fs.readdir.mockResolvedValue([fooChartDirentMock, myChartDirentMock]);
+      child_process.execSync.mockReturnValue(Buffer.from(""));
       await expect(getChangedChartsArchives(["my-chart,foo"])).resolves.toEqual(
         [
-          ".cr-release-packages/my-chart-1.0.0.tgz",
-          ".cr-release-packages/foo-2.0.0.tgz",
+          {
+            path: ".cr-release-packages/foo-2.0.0.tgz",
+            fileName: "foo-2.0.0",
+          },
+          {
+            path: ".cr-release-packages/my-chart-1.0.0.tgz",
+            fileName: "my-chart-1.0.0",
+          },
+        ],
+      );
+    });
+
+    test("should skip already existing image", async () => {
+      fs.readdir.mockResolvedValue([fooChartDirentMock, myChartDirentMock]);
+      child_process.execSync.mockReturnValue(Buffer.from("my-chart-1.0.0\n"));
+      await expect(getChangedChartsArchives(["my-chart,foo"])).resolves.toEqual(
+        [
+          {
+            path: ".cr-release-packages/foo-2.0.0.tgz",
+            fileName: "foo-2.0.0",
+          },
         ],
       );
     });
