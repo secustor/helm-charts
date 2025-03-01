@@ -57,6 +57,12 @@ describe("push-charts", () => {
   });
 
   describe("getChangedCharts", () => {
+    test("should return empty if archive folder does not exist", async () => {
+      fs.access.mockRejectedValue(new Error("not found"));
+      child_process.execSync.mockReturnValue(Buffer.from(""));
+      await expect(getChangedChartsArchives(["my-chart"])).resolves.toEqual([]);
+    });
+
     test("should return changed chart if only one exists", async () => {
       fs.readdir.mockResolvedValue([myChartDirentMock]);
       child_process.execSync.mockReturnValue(Buffer.from(""));
