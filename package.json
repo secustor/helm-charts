@@ -7,12 +7,13 @@
     "pnpm": "10.5.2"
   },
   "scripts": {
+    "fix": "pnpm run prettier:fix",
     "test": "vitest",
     "prettier:check": "prettier --check .",
     "prettier:fix": "prettier --write ."
   },
   "devDependencies": {
-    "@types/node": "22.13.7",
+    "@types/node": "22.13.10",
     "prettier": "3.5.2",
     "vitest": "3.0.7",
     "vitest-mock-extended": "3.0.1"
