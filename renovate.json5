@@ -9,6 +9,15 @@
     // bump chart version if the appVersion changes
     bumpVersion: "minor",
   },
+
+  packageRules: [
+    {
+      matchDepTypes: ["devDependencies"],
+      matchUpdateTypes: ["minor", "patch"],
+      automerge: true,
+      automergeType: "branch",
+    },
+  ],
   customManagers: [
     {
       customType: "regex",
