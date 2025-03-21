@@ -1,23 +1,14 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "config:recommended",
+    "github>secustor/renovate-config",
     "customManagers:helmChartYamlAppVersions",
-    "helpers:pinGitHubActionDigests",
   ],
   helmv3: {
     // bump chart version if the appVersion changes
     bumpVersion: "minor",
   },
 
-  packageRules: [
-    {
-      matchDepTypes: ["devDependencies"],
-      matchUpdateTypes: ["minor", "patch"],
-      automerge: true,
-      automergeType: "branch",
-    },
-  ],
   customManagers: [
     {
       customType: "regex",
