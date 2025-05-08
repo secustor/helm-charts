@@ -4,10 +4,14 @@
     "github>secustor/renovate-config",
     "customManagers:helmChartYamlAppVersions",
   ],
-  helmv3: {
-    // bump chart version if the appVersion changes
-    bumpVersion: "minor",
-  },
+
+  bumpVersions: [
+    {
+      filePatterns: ["{{packageFileDir}}/Chart.{yaml,yml}"],
+      matchStrings: ["version:\\s(?<version>[^\\s]+)"],
+      bumpType: "{{#if isMajor}}major{{else}}patch{{/if}}",
+    },
+  ],
 
   customManagers: [
     {
