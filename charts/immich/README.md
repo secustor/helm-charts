@@ -7,7 +7,7 @@ is targeted at an audience which wants to have some lower level control over the
 
 This chart requires:
 
-- a PostgreSQL database with `pgvector` or `pgvector.rs` extension installed
+- a PostgreSQL database with `pgvector` or [`VectorChord`](https://immich.app/docs/administration/postgres-standalone/#migrating-to-vectorchord) extension installed
 - a Redis instance
 
 ## Usage
