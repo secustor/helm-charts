@@ -5,6 +5,32 @@ entries:
       artifacthub.io/category: storage
       artifacthub.io/changes: |
         - Immich version update
+        - Breaking change: The `immich-server` image was updated to `v1.133.1` which contains breaking changes. If you are using `pgvector` you should be fine else you need to migrate your database.
+      artifacthub.io/links: |
+        - name: support
+          url: https://github.com/secustor/helm-charts/issues
+    apiVersion: v2
+    appVersion: v1.134.0
+    created: "2025-05-27T21:46:01.064638353Z"
+    description: A Immich Helm chart targeted at advanced users
+    digest: 18ae2a43738b3b53187f4757439195b633235208b689fed56cc567bd5e6a4e0d
+    home: https://immich.app/
+    icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+    maintainers:
+    - email: sebastian@poxhofer.at
+      name: secustor
+    name: immich
+    sources:
+    - https://github.com/secustor/helm-charts/tree/main/charts/immich
+    - https://github.com/immich-app/immich
+    type: application
+    urls:
+    - https://github.com/secustor/helm-charts/releases/download/immich-0.6.1/immich-0.6.1.tgz
+    version: 0.6.1
+  - annotations:
+      artifacthub.io/category: storage
+      artifacthub.io/changes: |
+        - Immich version update
         - Breaking change: The `immich-server` image was updated to `v1.133.1` which contains breaking changes. If you are using `pgvector` you should be fine else you need to migrate your database. https://github.com/immich-app/immich/releases/tag/v1.133.0
       artifacthub.io/links: |
         - name: support
@@ -412,4 +438,4 @@ entries:
     urls:
     - https://github.com/secustor/helm-charts/releases/download/immich-0.2.0/immich-0.2.0.tgz
     version: 0.2.0
-generated: "2025-05-25T21:05:50.343402788Z"
+generated: "2025-05-27T21:46:01.064829991Z"
