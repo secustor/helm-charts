@@ -13,7 +13,7 @@
     "prettier:fix": "prettier --write ."
   },
   "devDependencies": {
-    "@types/node": "22.15.21",
+    "@types/node": "22.15.23",
     "prettier": "3.5.3",
     "vitest": "3.1.4",
     "vitest-mock-extended": "3.1.0"
