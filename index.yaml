@@ -4,8 +4,7 @@ entries:
   - annotations:
       artifacthub.io/category: storage
       artifacthub.io/changes: |
-        - Immich version update
-        - Breaking change: The "immich-server" image was updated to "v1.133.1" which contains breaking changes. If you are using "pgvector" you should be fine else you need to migrate your database.
+        Immich version update
       artifacthub.io/links: |
         - name: support
           url: https://github.com/secustor/helm-charts/issues
@@ -30,8 +29,7 @@ entries:
   - annotations:
       artifacthub.io/category: storage
       artifacthub.io/changes: |
-        - Immich version update
-        - Breaking change: The "immich-server" image was updated to "v1.133.1" which contains breaking changes. If you are using "pgvector" you should be fine else you need to migrate your database.
+        Breaking change: The "immich-server" image was updated to "v1.133.1" which contains breaking changes. If you are using "pgvector" you should be fine else you need to migrate your database.
       artifacthub.io/links: |
         - name: support
           url: https://github.com/secustor/helm-charts/issues
