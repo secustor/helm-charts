@@ -1,10 +1,10 @@
 {
   "name": "helm-charts",
   "type": "module",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "volta": {
     "node": "22.16.0",
-    "pnpm": "10.11.0"
+    "pnpm": "10.11.1"
   },
   "scripts": {
     "fix": "pnpm run prettier:fix",
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "22.15.29",
     "prettier": "3.5.3",
-    "vitest": "3.1.4",
+    "vitest": "3.2.0",
     "vitest-mock-extended": "3.1.0"
   }
 }
