@@ -3,9 +3,6 @@ entries:
   immich:
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.135.0
     created: "2025-06-19T06:48:43.09035867Z"
@@ -26,9 +23,6 @@ entries:
     version: 0.6.3
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.135.0
     created: "2025-06-18T22:30:46.570589816Z"
@@ -49,9 +43,6 @@ entries:
     version: 0.6.2
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.134.0
     created: "2025-05-27T21:46:01.064638353Z"
@@ -72,9 +63,6 @@ entries:
     version: 0.6.1
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.133.1
     created: "2025-05-25T21:05:50.343271704Z"
@@ -95,9 +83,6 @@ entries:
     version: 0.6.0
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.132.3
     created: "2025-04-29T10:21:25.403412948Z"
@@ -118,9 +103,6 @@ entries:
     version: 0.5.10
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.132.1
     created: "2025-04-24T07:41:59.91977251Z"
@@ -141,9 +123,6 @@ entries:
     version: 0.5.9
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.132.0
     created: "2025-04-23T21:31:54.68105303Z"
@@ -164,9 +143,6 @@ entries:
     version: 0.5.8
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.131.3
     created: "2025-04-02T09:31:52.669713326Z"
@@ -187,9 +163,6 @@ entries:
     version: 0.5.7
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.131.2
     created: "2025-04-01T18:10:57.140052754Z"
@@ -210,9 +183,6 @@ entries:
     version: 0.5.6
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.131.1
     created: "2025-04-01T05:38:26.364361698Z"
@@ -233,9 +203,6 @@ entries:
     version: 0.5.5
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.130.3
     created: "2025-03-28T07:05:29.94782451Z"
@@ -256,9 +223,6 @@ entries:
     version: 0.5.4
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.130.2
     created: "2025-03-27T06:25:53.070393726Z"
@@ -279,9 +243,6 @@ entries:
     version: 0.5.3
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.130.1
     created: "2025-03-25T21:29:12.974123604Z"
@@ -302,9 +263,6 @@ entries:
     version: 0.5.2
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.129.0
     created: "2025-03-08T22:14:52.173746268Z"
@@ -325,9 +283,6 @@ entries:
     version: 0.5.1
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.128.0
     created: "2025-02-28T23:31:09.262451498Z"
@@ -348,9 +303,6 @@ entries:
     version: 0.5.0
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.127.0
     created: "2025-02-26T21:30:11.655626054Z"
@@ -371,9 +323,6 @@ entries:
     version: 0.4.0
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.126.1
     created: "2025-02-10T20:57:37.948677036Z"
@@ -394,9 +343,6 @@ entries:
     version: 0.3.0
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.125.7
     created: "2025-01-29T21:43:43.294097716Z"
@@ -417,9 +363,6 @@ entries:
     version: 0.2.5
   - annotations:
       artifacthub.io/category: storage
-      artifacthub.io/links: |
-        - name: support
-          url: https://github.com/secustor/helm-charts/issues
     apiVersion: v2
     appVersion: v1.125.6
     created: "2025-01-28T10:30:36.681381594Z"
