@@ -11,14 +11,12 @@ maintainers:
     email: sebastian@poxhofer.at
 
 type: application
-version: 0.6.1
+version: 0.6.3
 # renovate: image=ghcr.io/immich-app/immich-server
-appVersion: "v1.134.0"
+appVersion: "v1.135.0"
 
 annotations:
   artifacthub.io/category: storage
   artifacthub.io/links: |
     - name: support
       url: https://github.com/secustor/helm-charts/issues
-  artifacthub.io/changes: |
-    Immich version update
