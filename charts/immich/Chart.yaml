@@ -17,6 +17,3 @@ appVersion: "v1.135.0"
 
 annotations:
   artifacthub.io/category: storage
-  artifacthub.io/links: |
-    - name: support
-      url: https://github.com/secustor/helm-charts/issues
