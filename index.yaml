@@ -4,6 +4,26 @@ entries:
   - annotations:
       artifacthub.io/category: storage
     apiVersion: v2
+    appVersion: v1.135.2
+    created: "2025-06-20T22:54:53.278081621Z"
+    description: A Immich Helm chart targeted at advanced users
+    digest: 42b59b139380648635c2150544e11bccccbacb8ed62cd26d826153cfc2e4e261
+    home: https://immich.app/
+    icon: https://raw.githubusercontent.com/immich-app/immich/main/design/immich-logo.svg
+    maintainers:
+    - email: sebastian@poxhofer.at
+      name: secustor
+    name: immich
+    sources:
+    - https://github.com/secustor/helm-charts/tree/main/charts/immich
+    - https://github.com/immich-app/immich
+    type: application
+    urls:
+    - https://github.com/secustor/helm-charts/releases/download/immich-0.6.5/immich-0.6.5.tgz
+    version: 0.6.5
+  - annotations:
+      artifacthub.io/category: storage
+    apiVersion: v2
     appVersion: v1.135.1
     created: "2025-06-19T20:06:15.384766364Z"
     description: A Immich Helm chart targeted at advanced users
@@ -441,4 +461,4 @@ entries:
     urls:
     - https://github.com/secustor/helm-charts/releases/download/immich-0.2.0/immich-0.2.0.tgz
     version: 0.2.0
-generated: "2025-06-19T20:06:15.384973464Z"
+generated: "2025-06-20T22:54:53.278299097Z"
