@@ -50,8 +50,7 @@ server:
   podAnnotations: {}
   podLabels: {}
 
-  resources:
-    {}
+  resources: {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -72,8 +71,7 @@ server:
   podSecurityContext: {}
   # fsGroup: 2000
 
-  securityContext:
-    {}
+  securityContext: {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -82,8 +80,7 @@ server:
     # runAsUser: 1000
 
   # Additional environment variables to set on the container.
-  env:
-    []
+  env: []
     # - name: DB_VECTOR_EXTENSION
     #   value: "pgvector"
     # - name: SOME_OTHER_ENV
@@ -126,8 +123,7 @@ machineLearning:
   podAnnotations: {}
   podLabels: {}
 
-  resources:
-    {}
+  resources: {}
     # limits:
     #   cpu: 100m
     #   memory: 128Mi
@@ -148,8 +144,7 @@ machineLearning:
   podSecurityContext: {}
   # fsGroup: 2000
 
-  securityContext:
-    {}
+  securityContext: {}
     # capabilities:
     #   drop:
     #   - ALL
@@ -158,8 +153,7 @@ machineLearning:
     # runAsUser: 1000
 
   # Additional environment variables to set on the container.
-  env:
-    []
+  env: []
     # - name: DB_VECTOR_EXTENSION
     #   value: "pgvector"
     # - name: SOME_OTHER_ENV
@@ -199,8 +193,7 @@ serviceAccount:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    {}
+  annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
