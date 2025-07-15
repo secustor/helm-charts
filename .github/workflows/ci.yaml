@@ -10,7 +10,7 @@ concurrency:
 
 env:
   # renovate: datasource=node-version depName=node
-  NODE_VERSION: 22.17.0
+  NODE_VERSION: 22.17.1
 
 jobs:
   test:
