@@ -93,6 +93,7 @@ spec:
           securityContext:
             {{- toYaml .Values.server.securityContext | nindent 12 }}
           livenessProbe:
+            initialDelaySeconds: {{ .Values.server.livenessProbe.initialDelaySeconds }}
             httpGet:
               port: http
               path: /api/server/ping
