@@ -37,7 +37,7 @@ spec:
               service:
                 name: {{ include "immich-server.name" $ }}
                 port:
-                  number: {{ $.Values.service.port }}
+                  number: {{ $.Values.server.service.port }}
           {{- end }}
     {{- end }}
 {{- end }}
