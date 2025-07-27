@@ -103,7 +103,7 @@ server:
   volumeMounts: []
   # - name: uploads
   #   mountPath: /usr/src/app/upload
-  
+
   livenessProbe:
     initialDelaySeconds: 30
 
