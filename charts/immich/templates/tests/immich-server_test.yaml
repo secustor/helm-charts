@@ -143,4 +143,3 @@ tests:
           content:
             name: EXTRA
             value: foo
-

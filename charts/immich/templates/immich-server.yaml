@@ -101,8 +101,8 @@ spec:
             {{- toYaml .Values.server.resources | nindent 12 }}
           {{- if or .Values.server.volumeMounts .Values.server.pvcVolumes }}
           volumeMounts:
-            {{- range $i, $v := .Values.server.pvcVolumes }}
-            {{- $nm := include "immich-server.pvcSuffix" (dict "index" $i "name" $v.name) -}}
+            {{ range $i, $v := .Values.server.pvcVolumes }}
+            {{- $nm := include "immich-server.pvcSuffix" (dict "index" $i "name" $v.name) }}
             - name: immich-server-pvc-{{ $nm }}
               mountPath: {{ $v.path }}
             {{- end }}
@@ -112,8 +112,8 @@ spec:
           {{- end }}
       {{- if or .Values.server.volumes .Values.server.pvcVolumes }}
       volumes:
-        {{- range $i, $v := .Values.server.pvcVolumes }}
-        {{- $nm := include "immich-server.pvcSuffix" (dict "index" $i "name" $v.name) -}}
+        {{ range $i, $v := .Values.server.pvcVolumes }}
+        {{- $nm := include "immich-server.pvcSuffix" (dict "index" $i "name" $v.name) }}
         - name: immich-server-pvc-{{ $nm }}
           persistentVolumeClaim:
             claimName: {{ include "immich-server.name" $ }}-pvc-{{ $nm }}
