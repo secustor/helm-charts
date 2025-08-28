@@ -105,3 +105,13 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Generate a sanitized PVC name suffix from index/name to be reused across templates.
+*/}}
+{{- define "immich-server.pvcSuffix" -}}
+{{- $raw := default (printf "%d" .index) .name -}}
+{{- $safe := (regexReplaceAll "[^a-z0-9-]" (lower $raw) "-") -}}
+{{- $nm := (trimSuffix "-" (trunc 45 $safe)) -}}
+{{- $nm -}}
+{{- end }}
