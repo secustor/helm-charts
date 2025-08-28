@@ -11,7 +11,7 @@ maintainers:
     email: sebastian@poxhofer.at
 
 type: application
-version: 0.7.7
+version: 0.8.0
 # renovate: image=ghcr.io/immich-app/immich-server
 appVersion: "v1.139.4"
 
