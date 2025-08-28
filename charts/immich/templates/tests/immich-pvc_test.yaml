@@ -22,9 +22,6 @@ tests:
       - equal:
           path: spec.resources.requests.storage
           value: 10Gi
-      - equal:
-          path: spec.accessModes[0]
-          value: ReadWriteOnce
       - notExists:
           path: spec.storageClassName
 
@@ -44,3 +41,16 @@ tests:
           path: spec.storageClassName
           value: fast
 
+  - it: supports custom accessModes
+    set:
+      server:
+        pvcVolumes:
+          - name: data
+            path: /data
+            size: 1Gi
+            accessModes:
+              - ReadWriteOnce
+    asserts:
+      - equal:
+          path: spec.accessModes[0]
+          value: ReadWriteOnce

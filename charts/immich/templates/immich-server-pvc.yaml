@@ -8,8 +8,10 @@ metadata:
   labels:
     {{- include "immich-server.labels" $ | nindent 4 }}
 spec:
+  {{- if $v.accessModes }}
   accessModes:
-    - ReadWriteOnce
+    {{- toYaml $v.accessModes | nindent 4 }}
+  {{- end }}
   resources:
     requests:
       storage: {{ $v.size }}

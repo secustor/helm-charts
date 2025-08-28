@@ -96,6 +96,8 @@ server:
     #   path: /usr/src/app/upload
     #   size: 10Gi
     #   storageClass: ""
+    #   accessModes:
+    #     - ReadWriteMany
 
   # Additional volumes on the output Deployment definition.
   volumes: []
