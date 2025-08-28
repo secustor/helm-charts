@@ -1,0 +1,146 @@
+suite: immich-server
+templates:
+  - templates/immich-server.yaml
+tests:
+  - it: sets replicas when autoscaling disabled
+    set:
+      server:
+        autoscaling:
+          enabled: false
+        replicaCount: 3
+    asserts:
+      - equal:
+          path: spec.replicas
+          value: 3
+
+  - it: omits replicas when autoscaling enabled
+    set:
+      server:
+        autoscaling:
+          enabled: true
+    asserts:
+      - notExists:
+          path: spec.replicas
+
+  - it: uses appVersion as default image tag
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].image
+          value: ghcr.io/immich-app/immich-server:v1.139.4
+
+  - it: sets ports and liveness probe
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].ports[0].containerPort
+          value: 2283
+      - equal:
+          path: spec.template.spec.containers[0].livenessProbe.httpGet.path
+          value: /api/server/ping
+
+  - it: sets default env for vector, postgres and redis with created secrets
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].env[0].name
+          value: DB_VECTOR_EXTENSION
+      - equal:
+          path: spec.template.spec.containers[0].env[0].value
+          value: pgvector
+      - equal:
+          path: spec.template.spec.containers[0].env[1].name
+          value: DB_HOSTNAME
+      - equal:
+          path: spec.template.spec.containers[0].env[1].value
+          value: immich-db
+      - equal:
+          path: spec.template.spec.containers[0].env[2].name
+          value: DB_USERNAME
+      - equal:
+          path: spec.template.spec.containers[0].env[2].valueFrom.secretKeyRef.name
+          value: RELEASE-NAME-immich-postgres
+      - equal:
+          path: spec.template.spec.containers[0].env[3].name
+          value: DB_PASSWORD
+      - equal:
+          path: spec.template.spec.containers[0].env[3].valueFrom.secretKeyRef.name
+          value: RELEASE-NAME-immich-postgres
+      - equal:
+          path: spec.template.spec.containers[0].env[4].name
+          value: REDIS_HOSTNAME
+      - equal:
+          path: spec.template.spec.containers[0].env[4].value
+          value: immich-redis
+      - equal:
+          path: spec.template.spec.containers[0].env[5].name
+          value: REDIS_PASSWORD
+      - equal:
+          path: spec.template.spec.containers[0].env[5].valueFrom.secretKeyRef.name
+          value: RELEASE-NAME-immich-redis
+
+  - it: uses existing secrets when configured
+    set:
+      common:
+        postgres:
+          existingSecret:
+            enabled: true
+            secretName: pg-creds
+            usernameKey: user
+            passwordKey: pass
+        redis:
+          existingSecret:
+            enabled: true
+            secretName: redis-creds
+            passwordKey: pass
+    asserts:
+      - equal:
+          path: spec.template.spec.containers[0].env[2].valueFrom.secretKeyRef.name
+          value: pg-creds
+      - equal:
+          path: spec.template.spec.containers[0].env[2].valueFrom.secretKeyRef.key
+          value: user
+      - equal:
+          path: spec.template.spec.containers[0].env[3].valueFrom.secretKeyRef.name
+          value: pg-creds
+      - equal:
+          path: spec.template.spec.containers[0].env[3].valueFrom.secretKeyRef.key
+          value: pass
+      - equal:
+          path: spec.template.spec.containers[0].env[5].valueFrom.secretKeyRef.name
+          value: redis-creds
+      - equal:
+          path: spec.template.spec.containers[0].env[5].valueFrom.secretKeyRef.key
+          value: pass
+
+  - it: mounts configured PVC volumes
+    set:
+      server:
+        pvcVolumes:
+          - name: uploads
+            path: /usr/src/app/upload
+            size: 10Gi
+    asserts:
+      - equal:
+          path: spec.template.spec.volumes[0].name
+          value: immich-server-pvc-uploads
+      - equal:
+          path: spec.template.spec.volumes[0].persistentVolumeClaim.claimName
+          value: RELEASE-NAME-immich-server-pvc-uploads
+      - equal:
+          path: spec.template.spec.containers[0].volumeMounts[0].name
+          value: immich-server-pvc-uploads
+      - equal:
+          path: spec.template.spec.containers[0].volumeMounts[0].mountPath
+          value: /usr/src/app/upload
+
+  - it: merges custom env vars
+    set:
+      server:
+        env:
+          - name: EXTRA
+            value: foo
+    asserts:
+      - contains:
+          path: spec.template.spec.containers[0].env
+          content:
+            name: EXTRA
+            value: foo
+

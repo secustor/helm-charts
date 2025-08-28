@@ -1,0 +1,37 @@
+suite: ingress
+templates:
+  - templates/ingress.yaml
+
+tests:
+  - it: does not render by default
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders with class and host
+    set:
+      ingress:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: example.com
+            paths:
+              - path: /
+                pathType: Prefix
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich
+      - equal:
+          path: spec.ingressClassName
+          value: nginx
+      - equal:
+          path: spec.rules[0].host
+          value: example.com
+      - equal:
+          path: spec.rules[0].http.paths[0].backend.service.name
+          value: RELEASE-NAME-immich-server
+      - equal:
+          path: spec.rules[0].http.paths[0].backend.service.port.number
+          value: 2283
+

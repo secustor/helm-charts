@@ -1,0 +1,46 @@
+suite: immich-server-pvc
+templates:
+  - templates/immich-server-pvc.yaml
+
+tests:
+  - it: does not render by default
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders a PVC for each configured volume without storageClass
+    set:
+      server:
+        pvcVolumes:
+          - name: uploads
+            path: /usr/src/app/upload
+            size: 10Gi
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich-server-pvc-uploads
+      - equal:
+          path: spec.resources.requests.storage
+          value: 10Gi
+      - equal:
+          path: spec.accessModes[0]
+          value: ReadWriteOnce
+      - notExists:
+          path: spec.storageClassName
+
+  - it: sets storageClassName when provided
+    set:
+      server:
+        pvcVolumes:
+          - name: foo
+            path: /data/foo
+            size: 5Gi
+            storageClass: fast
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich-server-pvc-foo
+      - equal:
+          path: spec.storageClassName
+          value: fast
+
