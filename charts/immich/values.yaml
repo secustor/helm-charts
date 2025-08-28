@@ -89,6 +89,16 @@ server:
     #       name: mySecret
     #       key: secretField
 
+  # Create and mount PersistentVolumeClaims to the server container.
+  # Each entry defines a mount name, path and PVC size. Optionally, set a storageClass.
+  pvcVolumes: []
+    # - name: foo
+    #   path: /usr/src/app/upload
+    #   size: 10Gi
+    #   storageClass: ""
+    #   accessModes:
+    #     - ReadWriteMany
+
   # Additional volumes on the output Deployment definition.
   volumes: []
   # - name: uploads

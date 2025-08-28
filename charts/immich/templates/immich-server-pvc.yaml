@@ -1,0 +1,22 @@
+{{- $fullName := include "immich-server.name" . -}}
+{{- range $i, $v := .Values.server.pvcVolumes }}
+{{- $nm := include "immich-server.pvcSuffix" (dict "index" $i "name" $v.name) -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ $fullName }}-pvc-{{ $nm }}
+  labels:
+    {{- include "immich-server.labels" $ | nindent 4 }}
+spec:
+  {{- if $v.accessModes }}
+  accessModes:
+    {{- toYaml $v.accessModes | nindent 4 }}
+  {{- end }}
+  resources:
+    requests:
+      storage: {{ $v.size }}
+  {{- if $v.storageClass }}
+  storageClassName: {{ $v.storageClass | quote }}
+  {{- end }}
+---
+{{- end }}

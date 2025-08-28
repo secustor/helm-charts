@@ -1,0 +1,71 @@
+suite: immich-machine-learning
+templates:
+  - templates/immich-machine-learning.yaml
+  - templates/immich-machine-learning.service.yaml
+
+tests:
+  - it: deployment does not render by default
+    templates:
+      - templates/immich-machine-learning.yaml
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders deployment when enabled and sets cache env/volumes by default
+    set:
+      machineLearning:
+        enabled: true
+    templates:
+      - templates/immich-machine-learning.yaml
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich-machine-learning
+      - equal:
+          path: spec.template.spec.containers[0].env[0].name
+          value: TRANSFORMERS_CACHE_DIR
+      - equal:
+          path: spec.template.spec.containers[0].env[0].value
+          value: /cache
+      - equal:
+          path: spec.template.spec.containers[0].volumeMounts[0].mountPath
+          value: /cache
+      - equal:
+          path: spec.template.spec.volumes[0].name
+          value: model-cache
+      - equal:
+          path: spec.template.spec.volumes[0].emptyDir.sizeLimit
+          value: 10Gi
+      - notExists:
+          path: spec.template.spec.volumes[0].emptyDir.medium
+
+  - it: uses memory-backed cache when configured
+    set:
+      machineLearning:
+        enabled: true
+        cache:
+          useMemory: true
+    templates:
+      - templates/immich-machine-learning.yaml
+    asserts:
+      - equal:
+          path: spec.template.spec.volumes[0].emptyDir.medium
+          value: Memory
+
+  - it: service renders always and exposes default port
+    templates:
+      - templates/immich-machine-learning.service.yaml
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich-machine-learning
+      - equal:
+          path: spec.ports[0].port
+          value: 3003
+      - equal:
+          path: spec.ports[0].targetPort
+          value: http
+      - equal:
+          path: spec.selector["app.kubernetes.io/component"]
+          value: machine-learning
+

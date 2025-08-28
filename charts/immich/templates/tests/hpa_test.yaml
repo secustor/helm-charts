@@ -1,0 +1,61 @@
+suite: immich-server-hpa
+templates:
+  - templates/immich-server.hpa.yaml
+
+tests:
+  - it: does not render by default (autoscaling disabled)
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders HPA when autoscaling enabled with cpu metric only
+    set:
+      server:
+        autoscaling:
+          enabled: true
+          minReplicas: 2
+          maxReplicas: 5
+          targetCPUUtilizationPercentage: 80
+    asserts:
+      - equal:
+          path: metadata.name
+          value: RELEASE-NAME-immich-server
+      - equal:
+          path: spec.scaleTargetRef.name
+          value: RELEASE-NAME-immich-server
+      - equal:
+          path: spec.minReplicas
+          value: 2
+      - equal:
+          path: spec.maxReplicas
+          value: 5
+      - equal:
+          path: spec.metrics[0].resource.name
+          value: cpu
+      - equal:
+          path: spec.metrics[0].resource.target.averageUtilization
+          value: 80
+      - notContains:
+          path: spec.metrics
+          content:
+            resource:
+              name: memory
+
+  - it: includes memory metric when configured
+    set:
+      server:
+        autoscaling:
+          enabled: true
+          targetCPUUtilizationPercentage: 50
+          targetMemoryUtilizationPercentage: 60
+    asserts:
+      - contains:
+          path: spec.metrics
+          content:
+            type: Resource
+            resource:
+              name: memory
+              target:
+                type: Utilization
+                averageUtilization: 60
+

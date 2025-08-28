@@ -1,0 +1,20 @@
+suite: immich-server-service
+templates:
+  - templates/immich-server.service.yaml
+
+tests:
+  - it: exposes http on expected port
+    asserts:
+      - equal:
+          path: spec.type
+          value: ClusterIP
+      - equal:
+          path: spec.ports[0].port
+          value: 2283
+      - equal:
+          path: spec.ports[0].targetPort
+          value: http
+      - equal:
+          path: spec.ports[0].name
+          value: http
+
