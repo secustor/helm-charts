@@ -95,7 +95,7 @@ jobs:
           helm unittest -f "templates/tests/**/*.yaml" .
 
   gather-results:
-    name: Gather results
+    name: Result
     runs-on: ubuntu-latest
     needs:
       - vitest
