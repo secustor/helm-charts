@@ -6,21 +6,15 @@
   ],
   bumpVersions: [
     {
-      filePatterns: [
-        '{{packageFileDir}}/Chart.{yaml,yml}',
-      ],
-      matchStrings: [
-        'version:\\s(?<version>[^\\s]+)',
-      ],
+      filePatterns: ['{{packageFileDir}}/Chart.{yaml,yml}'],
+      matchStrings: ['version:\\s(?<version>[^\\s]+)'],
       bumpType: '{{#if isMajor}}major{{else}}patch{{/if}}',
     },
   ],
   customManagers: [
     {
       customType: 'regex',
-      managerFilePatterns: [
-        '/\\.github/workflows/release\\.ya?ml/',
-      ],
+      managerFilePatterns: ['/\\.github/workflows/release\\.ya?ml/'],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+version\\s*:\\s*["\']?(?<currentValue>.+?)["\']?\\s',
       ],
