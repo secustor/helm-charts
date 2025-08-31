@@ -21,3 +21,5 @@
 .idea/
 *.tmproj
 .vscode/
+# Do not add tests to artifact
+tests
