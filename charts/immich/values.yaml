@@ -9,7 +9,9 @@ common:
   config:
     # This has only an effect during database initialization
     # pgvector is the default as CloudNativePG supports it out of the box
-    vectorExtension: pgvector # or pgvecto.rs
+    # Set to an empty string to unset the DB_VECTOR_EXTENSION environment variable;
+    # this is required to use VectorChord as the vector extension: https://immich.app/docs/administration/postgres-standalone/#migrating-from-pgvector
+    vectorExtension: pgvector # , pgvecto.rs or ""
   postgres:
     host: immich-db
     existingSecret:

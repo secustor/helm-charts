@@ -76,6 +76,16 @@ tests:
           path: spec.template.spec.containers[0].env[5].valueFrom.secretKeyRef.name
           value: RELEASE-NAME-immich-redis
 
+  - it: omits vector environment when vectorExtension is set blank
+    set:
+      common:
+        config:
+          vectorExtension: ""
+    asserts:
+      - notEqual:
+          path: spec.template.spec.containers[0].env[0].name
+          value: DB_VECTOR_EXTENSION
+
   - it: uses existing secrets when configured
     set:
       common:
