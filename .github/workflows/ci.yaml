@@ -15,7 +15,7 @@ permissions: {}
 
 env:
   # renovate: datasource=node-version depName=node
-  NODE_VERSION: 22.21.1
+  NODE_VERSION: 24.11.0
 
 jobs:
   discovery:
