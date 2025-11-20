@@ -8,8 +8,8 @@ spec:
   {{- if not .Values.server.autoscaling.enabled }}
   replicas: {{ .Values.server.replicaCount }}
   {{- end }}
-  {{- if .Values.updateStrategy }}
-  strategy: {{- toYaml .Values.updateStrategy | nindent 4 }}
+  {{- if .Values.server.updateStrategy }}
+  strategy: {{- toYaml .Values.server.updateStrategy | nindent 4 }}
   {{- end }}
   selector:
     matchLabels:
