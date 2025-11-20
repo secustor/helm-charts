@@ -132,7 +132,11 @@ machineLearning:
     sizeLimit: 10Gi
 
   replicaCount: 1
-
+  # This section configures the update strategy for the deployment.
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate: {}
+    
   image:
     repository: ghcr.io/immich-app/immich-machine-learning
     pullPolicy: IfNotPresent
