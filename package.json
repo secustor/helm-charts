@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "24.10.4",
     "prettier": "3.7.4",
-    "vitest": "4.0.15",
+    "vitest": "4.0.16",
     "vitest-mock-extended": "3.1.0"
   },
   "prettier": {
