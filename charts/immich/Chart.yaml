@@ -11,9 +11,9 @@ maintainers:
     email: sebastian@poxhofer.at
 
 type: application
-version: 1.0.7
+version: 1.0.8
 # renovate: image=ghcr.io/immich-app/immich-server
-appVersion: "v2.3.1"
+appVersion: "v2.4.0"
 
 annotations:
   artifacthub.io/category: storage
