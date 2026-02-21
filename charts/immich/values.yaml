@@ -134,9 +134,7 @@ machineLearning:
   replicaCount: 1
 
   # https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
-  strategy:
-    type: RollingUpdate
-    rollingUpdate: {}
+  strategy: {}
 
   image:
     repository: ghcr.io/immich-app/immich-machine-learning
