@@ -33,6 +33,12 @@ common:
       password: ""
 
 server:
+  # https://github.com/immich-app/immich/blob/main/docs/docs/features/monitoring.md
+  metrics:
+    enabled: false
+    #  List of host, api, io, repo, job. Note: You can also specify all to enable all
+    telemetry_include: "all"
+
   # This will set the replicaset count. Ignored if autoscaling is enabled.
   replicaCount: 1
 

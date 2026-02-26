@@ -41,8 +41,24 @@ spec:
             - name: http
               containerPort: {{ .Values.server.service.port }}
               protocol: TCP
+            {{- if .Values.server.metrics.enabled }}
+            - name: metrics-api
+              containerPort: 8081
+              protocol: TCP
+            - name: metrics-ms
+              containerPort: 8082
+              protocol: TCP
+            {{- end }}
           env:
-          {{- if .Values.common.config.vectorExtension}}
+          {{- if .Values.server.metrics.enabled }}
+            - name: IMMICH_TELEMETRY_INCLUDE
+              value: {{ .Values.server.metrics.telemetry_include }}
+            - name: IMMICH_API_METRICS_PORT
+              value: "8081"
+            - name: IMMICH_MICROSERVICES_METRICS_PORT
+              value: "8082"
+          {{- end }}
+          {{- if .Values.common.config.vectorExtension }}
             - name: DB_VECTOR_EXTENSION
               value: {{ .Values.common.config.vectorExtension }}
           {{- end }}
