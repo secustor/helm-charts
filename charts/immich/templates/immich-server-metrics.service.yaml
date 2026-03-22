@@ -1,0 +1,21 @@
+{{- if .Values.server.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "immich-server.name" . }}-metrics
+  labels:
+    {{- include "immich-server.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.server.metrics.service.type }}
+  ports:
+    - port: {{ .Values.server.metrics.service.ports.api }}
+      targetPort: {{ .Values.server.metrics.service.ports.api }}
+      protocol: TCP
+      name: metrics-api
+    - port: {{ .Values.server.metrics.service.ports.ms }}
+      targetPort: {{ .Values.server.metrics.service.ports.ms }}
+      protocol: TCP
+      name: metrics-ms
+  selector:
+    {{- include "immich-server.selectorLabels" . | nindent 4 }}
+{{- end }}
