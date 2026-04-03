@@ -9,17 +9,17 @@ importers:
   .:
     devDependencies:
       '@types/node':
-        specifier: 24.12.0
-        version: 24.12.0
+        specifier: 24.12.2
+        version: 24.12.2
       prettier:
         specifier: 3.8.1
         version: 3.8.1
       vitest:
         specifier: 4.1.2
-        version: 4.1.2(@types/node@24.12.0)(vite@6.2.0(@types/node@24.12.0))
+        version: 4.1.2(@types/node@24.12.2)(vite@6.2.0(@types/node@24.12.2))
       vitest-mock-extended:
         specifier: 3.1.1
-        version: 3.1.1(typescript@5.8.2)(vitest@4.1.2(@types/node@24.12.0)(vite@6.2.0(@types/node@24.12.0)))
+        version: 3.1.1(typescript@5.8.2)(vitest@4.1.2(@types/node@24.12.2)(vite@6.2.0(@types/node@24.12.2)))
 
 packages:
 
@@ -293,8 +293,8 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
-  '@types/node@24.12.0':
-    resolution: {integrity: sha512-GYDxsZi3ChgmckRT9HPU0WEhKLP08ev/Yfcq2AstjrDASOYCSXeyjDsHg4v5t4jOj7cyDX3vmprafKlWIG9MXQ==}
+  '@types/node@24.12.2':
+    resolution: {integrity: sha512-A1sre26ke7HDIuY/M23nd9gfB+nrmhtYyMINbjI1zHJxYteKR6qSMX56FsmjMcDb3SMcjJg5BiRRgOCC/yBD0g==}
 
   '@vitest/expect@4.1.2':
     resolution: {integrity: sha512-gbu+7B0YgUJ2nkdsRJrFFW6X7NTP44WlhiclHniUhxADQJH5Szt9mZ9hWnJPJ8YwOK5zUOSSlSvyzRf0u1DSBQ==}
@@ -672,7 +672,7 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
-  '@types/node@24.12.0':
+  '@types/node@24.12.2':
     dependencies:
       undici-types: 7.16.0
 
@@ -685,13 +685,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.2(vite@6.2.0(@types/node@24.12.0))':
+  '@vitest/mocker@4.1.2(vite@6.2.0(@types/node@24.12.2))':
     dependencies:
       '@vitest/spy': 4.1.2
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 6.2.0(@types/node@24.12.0)
+      vite: 6.2.0(@types/node@24.12.2)
 
   '@vitest/pretty-format@4.1.2':
     dependencies:
@@ -838,25 +838,25 @@ snapshots:
 
   undici-types@7.16.0: {}
 
-  vite@6.2.0(@types/node@24.12.0):
+  vite@6.2.0(@types/node@24.12.2):
     dependencies:
       esbuild: 0.25.0
       postcss: 8.5.3
       rollup: 4.34.8
     optionalDependencies:
-      '@types/node': 24.12.0
+      '@types/node': 24.12.2
       fsevents: 2.3.3
 
-  vitest-mock-extended@3.1.1(typescript@5.8.2)(vitest@4.1.2(@types/node@24.12.0)(vite@6.2.0(@types/node@24.12.0))):
+  vitest-mock-extended@3.1.1(typescript@5.8.2)(vitest@4.1.2(@types/node@24.12.2)(vite@6.2.0(@types/node@24.12.2))):
     dependencies:
       ts-essentials: 10.0.4(typescript@5.8.2)
       typescript: 5.8.2
-      vitest: 4.1.2(@types/node@24.12.0)(vite@6.2.0(@types/node@24.12.0))
+      vitest: 4.1.2(@types/node@24.12.2)(vite@6.2.0(@types/node@24.12.2))
 
-  vitest@4.1.2(@types/node@24.12.0)(vite@6.2.0(@types/node@24.12.0)):
+  vitest@4.1.2(@types/node@24.12.2)(vite@6.2.0(@types/node@24.12.2)):
     dependencies:
       '@vitest/expect': 4.1.2
-      '@vitest/mocker': 4.1.2(vite@6.2.0(@types/node@24.12.0))
+      '@vitest/mocker': 4.1.2(vite@6.2.0(@types/node@24.12.2))
       '@vitest/pretty-format': 4.1.2
       '@vitest/runner': 4.1.2
       '@vitest/snapshot': 4.1.2
@@ -873,10 +873,10 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.1.0
-      vite: 6.2.0(@types/node@24.12.0)
+      vite: 6.2.0(@types/node@24.12.2)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 24.12.0
+      '@types/node': 24.12.2
     transitivePeerDependencies:
       - msw
 
