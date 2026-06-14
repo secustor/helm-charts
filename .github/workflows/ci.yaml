@@ -87,7 +87,7 @@ jobs:
           version: v4.2.1
 
       - name: Install helm-unittest plugin
-        run: helm plugin install https://github.com/helm-unittest/helm-unittest
+        run: helm plugin install https://github.com/helm-unittest/helm-unittest --verify=false
 
       - name: Run Helm chart unit tests
         working-directory: ${{ matrix.working-directory }}
