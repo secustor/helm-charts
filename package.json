@@ -9,7 +9,7 @@
     "prettier:fix": "prettier --write ."
   },
   "devDependencies": {
-    "@types/node": "24.13.2",
+    "@types/node": "24.13.3",
     "prettier": "3.9.4",
     "vitest": "4.1.10",
     "vitest-mock-extended": "4.0.0"
