@@ -18,8 +18,8 @@ importers:
         specifier: 4.1.10
         version: 4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3))
       vitest-mock-extended:
-        specifier: 5.0.0
-        version: 5.0.0(typescript@5.8.2)(vitest@4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3)))
+        specifier: 5.1.0
+        version: 5.1.0(typescript@5.8.2)(vitest@4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3)))
 
 packages:
 
@@ -424,8 +424,8 @@ packages:
     resolution: {integrity: sha512-Bf+ILmBgretUrdJxzXM0SgXLZ3XfiaUuOj/IKQHuTXip+05Xn+uyEYdVg0kYDipTBcLrCVyUzAPz7QmArb0mmw==}
     engines: {node: '>=14.0.0'}
 
-  ts-essentials@10.0.4:
-    resolution: {integrity: sha512-lwYdz28+S4nicm+jFi6V58LaAIpxzhg9rLdgNC1VsdP/xiFBseGhF1M/shwCk6zMmwahBZdXcl34LVHrEang3A==}
+  ts-essentials@10.2.1:
+    resolution: {integrity: sha512-+Id1fRkuir+CsgK2x04/icS2b4V1hQmq7ObzIrDjhN0ozfRYivnP7aaKMVJfLApQm0trjR39A6NIMVchiB9Erw==}
     peerDependencies:
       typescript: '>=4.5.0'
     peerDependenciesMeta:
@@ -480,8 +480,8 @@ packages:
       yaml:
         optional: true
 
-  vitest-mock-extended@5.0.0:
-    resolution: {integrity: sha512-fnPf7Q5eVQPs8cCoNVdRA46khG1t1PL4LkdE7cYYZeT665jm0dGibYdBKCAQRCJhaw4Aam1QgraFiHMYnheTag==}
+  vitest-mock-extended@5.1.0:
+    resolution: {integrity: sha512-xW28qmo6CbEROzwFRKw+fhLQcwoxBbUHdezDtBJXiHinthfyYZ3pwt4ez4r+XPdimTbXJcFetjzKBJqMw1A6Jw==}
     peerDependencies:
       typescript: 3.x || 4.x || 5.x || 6.x || 7.x
       vitest: '>=4.0.0'
@@ -836,7 +836,7 @@ snapshots:
 
   tinyrainbow@3.1.0: {}
 
-  ts-essentials@10.0.4(typescript@5.8.2):
+  ts-essentials@10.2.1(typescript@5.8.2):
     optionalDependencies:
       typescript: 5.8.2
 
@@ -853,9 +853,9 @@ snapshots:
       '@types/node': 24.13.3
       fsevents: 2.3.3
 
-  vitest-mock-extended@5.0.0(typescript@5.8.2)(vitest@4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3))):
+  vitest-mock-extended@5.1.0(typescript@5.8.2)(vitest@4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3))):
     dependencies:
-      ts-essentials: 10.0.4(typescript@5.8.2)
+      ts-essentials: 10.2.1(typescript@5.8.2)
       typescript: 5.8.2
       vitest: 4.1.10(@types/node@24.13.3)(vite@6.2.0(@types/node@24.13.3))
 
