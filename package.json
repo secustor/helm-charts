@@ -12,7 +12,7 @@
     "@types/node": "24.13.3",
     "prettier": "3.9.6",
     "vitest": "4.1.10",
-    "vitest-mock-extended": "5.1.0"
+    "vitest-mock-extended": "5.1.1"
   },
   "prettier": {
     "overrides": [
