@@ -45,7 +45,7 @@ jobs:
 
   vitest:
     name: Run Vitest
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: discovery
     steps:
       - name: Checkout
